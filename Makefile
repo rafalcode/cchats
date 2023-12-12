@@ -5,7 +5,7 @@ DBGCFLAGS=-g -Wall -DDBG
 SPECLIBS=
 BZLIBS=-lbz2
 
-EXECUTABLES=wilcrsum wilcsrank
+EXECUTABLES=wilcrsum wilcsrank z0
 
 # Wilcoxon rank sum test for indep samples (aka Mann Whitney U)
 wilcrsum: wilcrsum.c
@@ -13,6 +13,9 @@ wilcrsum: wilcrsum.c
 
 # for dependent (matched pairs "before"/"after" the signed rank is used.
 wilcsrank: wilcsrank.c
+	${CC} ${DBGCFLAGS} -o $@ $^ -lm
+
+z0: z0.c
 	${CC} ${DBGCFLAGS} -o $@ $^ -lm
 
 .PHONY: clean
